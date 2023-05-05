@@ -2,5 +2,12 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-  - title: _
+  - title: about me
     entries:
+      - title: Software engineer @ Corigine Systems. Previously Nokia/Nuage Networks.
+      - title: MEng Electronic/Computer Engineering.
+      - title: Specializing in Software Defined Networking (SDN), packet processing, hardware off-loading, and computer networking.
+      - title: "github"
+        url: https://github.com/danieldevill
+      - title: "linkedin"
+        url: https://www.linkedin.com/in/dbbdevilliers-engineer/
