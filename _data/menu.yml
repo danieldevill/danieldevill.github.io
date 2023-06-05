@@ -7,7 +7,9 @@ entries:
       - title: Software engineer @ Corigine Systems. Previously Nokia/Nuage Networks.
       - title: MEng Electronic/Computer Engineering.
       - title: Specializing in Software Defined Networking (SDN), packet processing, hardware off-loading, and computer networking.
-      - title: "github"
+      - title: "github (Personal)"
         url: https://github.com/danieldevill
+      - title: "github (Corigine)"
+        url: https://github.com/daniel-devilliers
       - title: "linkedin"
         url: https://www.linkedin.com/in/dbbdevilliers-engineer/
