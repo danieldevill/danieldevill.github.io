@@ -2,7 +2,7 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-  - title: about me
+  - title: about Me
     entries:
       - title: Software engineer @ Corigine Systems. Previously Nokia/Nuage Networks.
       - title: MEng Electronic/Computer Engineering.
@@ -16,4 +16,8 @@ entries:
   - title: Software Engineering
     post_list:
       category: software_engineering
+      show_more: true
+  - title: Trip Reports
+    post_list:
+      category: travel
       show_more: true
