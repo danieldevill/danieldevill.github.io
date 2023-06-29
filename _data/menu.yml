@@ -13,3 +13,7 @@ entries:
         url: https://github.com/daniel-devilliers
       - title: "linkedin"
         url: https://www.linkedin.com/in/dbbdevilliers-engineer/
+  - title: Software Engineering
+    post_list:
+      category: software_engineering
+      show_more: true
