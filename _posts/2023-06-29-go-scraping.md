@@ -4,7 +4,6 @@ title: "Web scraping in Go using Colly"
 category: software_engineering
 published: true
 ---
-# Web scraping in Go using Colly
 
 I've just recently started learning Go. So far I've been working through the [Exercism](https://exercism.org/tracks/go) track. While this is great to get a holistic understanding of the different concepts, I've been itching to dive deeper and make use of Go in a more real-life projects. As an engineer I've been thrown into the deep end many times and have found that after establishing some theoretical understanding, learning through example is the best way to grasp something new quickly. This post is the start of a series where I dive deeper into Go and Go libraries.
 
