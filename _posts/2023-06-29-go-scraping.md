@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Web scraping in Go using Colly"
+title: "Web scraping in Go using Colly and MongoDB"
 category: software_engineering
 published: true
 ---
@@ -179,5 +179,55 @@ Which yields the following results:
 {"stock_code":"SSW","date":"2023/03/01","Beneficiary":"Maphai, Thabane Vincent","deal_type":"\nBuy (SENS)\n","value":276430,"volume":7411,"price":37.3}
 {"stock_code":"SSW","date":"2022/12/02","Beneficiary":"Menell, Richard P","deal_type":"\nSell (SENS)\n","value":236700,"volume":5000,"price":47.34}
 ```
+
+## Storing the results in a MongoDB database
+
+Once the results have been collected, we need to store the data for further processing. This can be done using a variety of different options such as a CSV file or a database. In this example we make use of MongoDB to store the results. MongoDB is a NoSQL database, that uses JSON-like documents and allows for creating aggregation pipelines which we can use to analyze the data further.
+
+Integrating MongoDB into Go is relatively simple. We start by importing the relevant Mongo drivers:
+
+```golang
+import {
+	...
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+}
+```
+
+Then we establish the appropriate connection to our database. This can be a local MongoMD database or one hosted on the cloud, such as [MongoDB Atlas](https://www.mongodb.com/atlas/database), which we use here.
+
+```golang
+	// MongoDB Atlas connection settings
+	mongoURI := "mongodb+srv://<user>:<password>@<collection>.mongodb.net/<database>retryWrites=true&w=majority"
+
+	// Connect to MongoDB Atlas
+	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
+	if err != nil {
+		log.Fatalf("Failed to create MongoDB client: %v", err)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10)
+	defer cancel()
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatalf("Failed to connect to MongoDB Atlas: %v", err)
+	}
+	defer client.Disconnect(ctx)
+
+	// Access the database and collection
+	db := client.Database("<database>")
+	collection := db.Collection("<collection>")
+```
+
+After the web data is scraped and the JSON struct is populated, we can add it to the cluster with:
+```golang
+			// Insert the data into MongoDB
+			_, err = collection.InsertOne(ctx, dealings)
+			if err != nil {
+				log.Fatalf("Failed to insert data into MongoDB: %v", err)
+			}
+```
+
+## Source code
 
 The full source can be found on my GitHub: [jse_directors_dealings_scraper](https://github.com/danieldevill/jse_directors_dealings_scraper)
